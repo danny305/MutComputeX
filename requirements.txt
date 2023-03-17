@@ -1,0 +1,4 @@
+black==23.1.0
+numpy==1.22.4
+pandas==1.4.2
+tensorflow-rocm==2.9.1
