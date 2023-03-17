@@ -14,3 +14,5 @@
 
 ### Run inference: 
 - `$ cd scripts && python generate_norbelladine_predictions.py`
+
+## The models require AMD GPUs and tensorflow-rocm >= 2.9.x in order to generate inferences.
