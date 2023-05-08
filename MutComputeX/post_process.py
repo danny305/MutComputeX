@@ -136,8 +136,12 @@ def calc_log_odds(row: pd.Series) -> float:
 def average_predictions(prediction_dfs: List[pd.DataFrame]) -> pd.DataFrame:
     df = concat_predictions(prediction_dfs)
 
+    groupby_cols = ['pdb_id', 'chain_id', 'pos', 'wtAA']
+
+    df = df[[*groupby_cols, *PREDICTION_AA_COL_NAMES]]
+
     avg_df = (
-        df.groupby(["pdb_id", "chain_id", "pos", "wtAA"], as_index=False)
+        df.groupby([groupby_cols], as_index=False)
         .mean()
         .round(6)
     )
