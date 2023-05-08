@@ -141,7 +141,7 @@ def average_predictions(prediction_dfs: List[pd.DataFrame]) -> pd.DataFrame:
     df = df[[*groupby_cols, *PREDICTION_AA_COL_NAMES]]
 
     avg_df = (
-        df.groupby([groupby_cols], as_index=False)
+        df.groupby(groupby_cols, as_index=False)
         .mean()
         .round(6)
     )
