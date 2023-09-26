@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import List
 from os import environ
+from argparse import ArgumentParser
 
 from MutComputeX.inference import EnsembleCIFPredictor
 
@@ -23,10 +24,17 @@ if __name__ == "__main__":
     environ["TF_FORCE_GPU_ALLOW_GROWTH"] = "true"
     environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
+    parser = ArgumentParser()
+    parser.add_argument(
+        "--data",
+        default=Path("../data/norbelladine_4OMTase/boxes/4OMTase_dataset.pkl"),
+        type=Path,
+    )
+    parser.add_argument("--out-file", default=None)
+    args = vars(parser.parse_args())
+
     model_dir = Path("../models/")
 
     models = [m_dir for m_dir in model_dir.iterdir() if m_dir.is_dir()]
 
-    data = Path("../data/norbelladine_4OMTase/boxes/4OMTase_dataset.pkl")
-
-    generate_inference(models, data)
+    generate_inference(models, **args)
