@@ -112,7 +112,7 @@ def find_predAA(row: pd.Series) -> Tuple[str, float]:
     assert isinstance(row, pd.Series)
 
     idx = np.argmax(row)
-    pred_AA, pred_prob = row.index[idx].replace("pr", ""), row[idx]
+    pred_AA, pred_prob = row.index[idx].replace("pr", ""), row.iloc[idx]
 
     return pred_AA, pred_prob
 
@@ -141,7 +141,7 @@ def average_predictions(prediction_dfs: List[pd.DataFrame]) -> pd.DataFrame:
     df = df[[*groupby_cols, *PREDICTION_AA_COL_NAMES]]
 
     avg_df = (
-        df.groupby([groupby_cols], as_index=False)
+        df.groupby(groupby_cols, as_index=False)
         .mean()
         .round(6)
     )
