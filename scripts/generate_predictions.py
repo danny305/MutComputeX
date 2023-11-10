@@ -10,6 +10,12 @@ from MutComputeX.inference import EnsembleCIFPredictor
 def cli():
     parser = ArgumentParser()
     parser.add_argument(
+        "--data",
+        required=True,
+        type=Path,
+        help="Pickle file with serialized microenvironments and snapshots",
+    )
+    parser.add_argument(
         "--model-dir",
         default=Path("../models"),
         type=Path,
