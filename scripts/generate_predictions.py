@@ -28,12 +28,6 @@ def cli():
         default="*",
         help="glob to select specific models/directories in the model-dir folder",
     )
-    parser.add_argument(
-        "--data",
-        default=Path("../data/norbelladine_4OMTase/boxes/4OMTase_dataset.pkl"),
-        type=Path,
-        help="Pickle file with serialized microenvironments and snapshots",
-    )
     parser.add_argument("--out-file", default=None, type=Path)
     parser.add_argument("--use-cpu", action="store_true")
 

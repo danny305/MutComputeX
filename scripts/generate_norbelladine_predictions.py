@@ -2,7 +2,7 @@ from pathlib import Path
 from os import environ
 from pprint import pprint
 
-from .generate_predictions import generate_inference
+from generate_predictions import generate_inference
 
 
 if __name__ == "__main__":
